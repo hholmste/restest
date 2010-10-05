@@ -10,11 +10,18 @@ import org.apache.commons.httpclient.methods.GetMethod;
  */
 public class CanIAccessProductServices {
 
+	private final JettyEmbedder jettyEmbedder;
+
 	public CanIAccessProductServices() {
+		jettyEmbedder = JettyEmbedder.getJettyEmbedder();
 
 	}
 
 	public int listProducts() throws IOException {
+		if (!jettyEmbedder.isRunning()) {
+			jettyEmbedder.start();
+		}
+
 		HttpClient client = new HttpClient();
 
 		return client.executeMethod(new GetMethod(

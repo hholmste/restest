@@ -24,8 +24,7 @@ public class EmbeddedJettyExample {
 	}
 
 	@Test
-	public void shouldStartAJettyServerAccessAResourceAndShutDownTheServer()
-			throws HttpException, IOException {
+	public void shouldAccessAKnownResource() throws HttpException, IOException {
 		HttpClient client = new HttpClient();
 		assertEquals(200, client.executeMethod(new GetMethod(
 				"http://localhost:8080/restest/product")));

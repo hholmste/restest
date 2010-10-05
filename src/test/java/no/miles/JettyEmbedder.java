@@ -13,15 +13,10 @@ public class JettyEmbedder {
 	public static JettyEmbedder getJettyEmbedder() {
 		Server server = new Server(8080);
 
-		Context root = new Context(server, "/", Context.SESSIONS);
+		Context root = new Context(server, "/restest");
 
 		ServletHolder servletHolder = new ServletHolder(ServletContainer.class);
 
-		/*
-		 * servletHolder.setInitParameter(
-		 * "com.sun.jersey.config.property.resourceConfigClass",
-		 * "com.sun.jersey.api.core.PackagesResourceConfig");
-		 */
 		servletHolder.setInitParameter(
 				"com.sun.jersey.config.property.packages", "no.miles");
 
@@ -50,6 +45,10 @@ public class JettyEmbedder {
 			return false;
 		}
 		return true;
+	}
+
+	public boolean isRunning() {
+		return server.isRunning();
 	}
 
 }

@@ -1,0 +1,11 @@
+#should get 200 OK and a list of products: GET
+curl http://localhost:8080/restest/product
+
+#should get 200 OK and god knows what else: POST
+curl http://localhost:8080/restest/product -d "id=12"
+
+#should get 200 OK and god knows what else: PUT
+curl http://localhost:8080/restest/product -X PUT -d "name=Volvo XS&description=A not so fancy car"
+
+#should get 200 OK and god knows what else: DELETE
+curl http://localhost:8080/restest/product -X DELETE -d "id=12"

@@ -10,10 +10,14 @@ public class JettyEmbedder {
 
 	private final Server server;
 
-	public static JettyEmbedder getJettyEmbedder() {
-		Server server = new Server(8080);
+	public JettyEmbedder() {
+		server = setUpServer();
+	}
 
-		Context root = new Context(server, "/restest");
+	private Server setUpServer() {
+		Server localServer = new Server(8080);
+
+		Context root = new Context(localServer, "/restest");
 
 		ServletHolder servletHolder = new ServletHolder(ServletContainer.class);
 
@@ -22,11 +26,7 @@ public class JettyEmbedder {
 
 		root.addServlet(servletHolder, "/*");
 
-		return new JettyEmbedder(server);
-	}
-
-	public JettyEmbedder(Server server) {
-		this.server = server;
+		return localServer;
 	}
 
 	public boolean start() {

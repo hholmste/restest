@@ -18,7 +18,7 @@ public class EmbeddedJettyExample {
 
 	@Before
 	public void setUp() {
-		embedder = JettyEmbedder.getJettyEmbedder();
+		embedder = new JettyEmbedder();
 
 		assertTrue(embedder.start());
 	}
@@ -26,6 +26,7 @@ public class EmbeddedJettyExample {
 	@Test
 	public void shouldAccessAKnownResource() throws HttpException, IOException {
 		HttpClient client = new HttpClient();
+
 		assertEquals(200, client.executeMethod(new GetMethod(
 				"http://localhost:8080/restest/product")));
 	}

@@ -1,6 +1,7 @@
 .classpath
 .project
 .settings
+reports
 *.iml
 *.ipr
 *.iws

@@ -10,7 +10,7 @@ import org.junit.experimental.theories.Theory;
 import org.junit.runner.RunWith;
 
 @RunWith(Theories.class)
-public class WhenIRenameAProduct {
+public class WhenIRenameAProductTest {
 
 	private final Product product = new Product("aName", "aDescription", "anId", 11.11);
 

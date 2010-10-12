@@ -9,7 +9,7 @@ import org.junit.experimental.theories.Theory;
 import org.junit.runner.RunWith;
 
 @RunWith(Theories.class)
-public class WhenIAskForProductPrices {
+public class WhenIAskForProductPricesTest {
 
 	@DataPoints
 	public static int[] numberOfItems = { 1, 2, 3, 4, 5 };

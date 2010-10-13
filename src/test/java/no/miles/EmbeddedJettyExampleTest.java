@@ -12,7 +12,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class EmbeddedJettyExample {
+public class EmbeddedJettyExampleTest {
 
 	private JettyEmbedder embedder;
 

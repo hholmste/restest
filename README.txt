@@ -29,3 +29,10 @@ make: *** [load.o] Error 1
 Why do I need a build-system (and a finicky and 'tardy one at that) to build me a build-system?
 
 I wish JRuby didn't insist on shipping with a bugged REXML.
+
+
+-------
+
+Screw it, I'm trying Gradle.
+
+One hour in and everything builds, but one test fails... oh, well, better than non-compiling BuildR...

@@ -11,3 +11,21 @@ Trying Ruby 1.8.6.
 Not awed yet.
 
 Sourceforge is not letting me download mingw. This is not going well.
+
+------
+
+ok, mingw is down; gcc --version gives me a nice version output, gem install buildr gives me "gcc cannot be found".
+
+Installed DevKit. God only knows what this is, but the Internet told me to use this. Why gem doesn't find gcc when it right there on my PATH, I don't know.
+
+More fun:
+
+In file included from load.c:31:0:
+jniwrap.h:24:19: error: 'long long long' is too long for GCC
+jniwrap.h:24:19: error: 'long long long' is too long for GCC
+jniwrap.h:24:1: warning: useless type name in empty declaration
+make: *** [load.o] Error 1
+
+Why do I need a build-system (and a finicky and 'tardy one at that) to build me a build-system?
+
+I wish JRuby didn't insist on shipping with a bugged REXML.

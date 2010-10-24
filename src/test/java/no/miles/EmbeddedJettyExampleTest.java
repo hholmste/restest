@@ -27,8 +27,7 @@ public class EmbeddedJettyExampleTest {
 	public void shouldAccessAKnownResource() throws HttpException, IOException {
 		HttpClient client = new HttpClient();
 
-		assertEquals(200, client.executeMethod(new GetMethod(
-				"http://localhost:8080/restest/product")));
+		assertEquals(200, client.executeMethod(new GetMethod("http://localhost:8080/restest/product")));
 	}
 
 	@After

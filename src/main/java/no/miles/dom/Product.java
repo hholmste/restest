@@ -22,6 +22,13 @@ public class Product {
 		}
 	}
 
+	public StringBuilder productToXML() {
+		return new StringBuilder("<product id='").append(id).append("'><name>")
+				.append(name).append("</name><description>")
+				.append(description).append("</description><price>")
+				.append(itemPrice).append("</price></product>");
+	}
+
 	public Product rename(String newName) {
 		return new Product(newName, description, id, itemPrice);
 	}
@@ -42,4 +49,39 @@ public class Product {
 		return itemPrice;
 	}
 
+	public static Builder aProduct() {
+		return new Builder();
+	}
+	
+	public static class Builder {
+		private String name;
+		private String description;
+		private String id;
+		private double itemPrice;
+		
+		public Builder withName(String name) {
+			this.name = name;
+			return this;
+		}
+		
+		public Builder withDescription(String description) {
+			this.description = description;
+			return this;
+		}
+		
+		public Builder withId(String id) {
+			this.id = id;
+			return this;
+		}
+		
+		public Builder withItemPrice(double itemPrice) {
+			this.itemPrice = itemPrice;
+			return this;
+		}
+		
+		public Product build() {
+			return new Product(name, description, id, itemPrice);
+		}
+	}
+	
 }

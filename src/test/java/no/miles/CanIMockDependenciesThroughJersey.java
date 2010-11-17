@@ -11,9 +11,10 @@ import java.util.Collections;
 
 import no.miles.dom.Product;
 import no.miles.service.ProductQueryService;
+import no.miles.service.ServiceFactory;
 
+import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.mockito.Mock;
 
@@ -21,7 +22,6 @@ import com.sun.jersey.api.client.WebResource;
 import com.sun.jersey.test.framework.JerseyTest;
 import com.sun.jersey.test.framework.spi.container.TestContainerException;
 
-@Ignore("no?")
 public class CanIMockDependenciesThroughJersey extends JerseyTest {
 
 	@Mock
@@ -34,6 +34,7 @@ public class CanIMockDependenciesThroughJersey extends JerseyTest {
 	@Before
 	public void setUpMocks() {
 		initMocks(this);
+		ServiceFactory.setProductQueryServiceInstance(productQueryService);
 		when(productQueryService.list()).thenReturn(Collections.singletonList(defaultProduct()));
 	}
 
@@ -43,15 +44,20 @@ public class CanIMockDependenciesThroughJersey extends JerseyTest {
 		String responseMsg = webResource.path("product").get(String.class);
 		assertThat(
 				responseMsg,
-				is(equalTo("<product id='testID'><name>testName</name><description>testDescription</description><price>15.5</price></product></productList>")));
+				is(equalTo("<product id='mockID'><name>mockName</name><description>mockDescription</description><price>15.5</price></product></productList>")));
 	}
 
 	private Product defaultProduct() {
 		return aProduct()
-				.withId("testID")
-				.withName("testName")
+				.withId("mockID")
+				.withName("mockName")
 				.withItemPrice(15.5)
-				.withDescription("testDescription")
+				.withDescription("mockDescription")
 				.build();
+	}
+
+	@After
+	public void tearDown() {
+		ServiceFactory.clearInjectedServices();
 	}
 }
